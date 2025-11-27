@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-11-27T17:59:39.176Z",
+  "totalRecords": 2,
+  "records": [
+    {
+      "id": 1764281440273,
+      "name": "Ali",
+      "value": "23"
+    },
+    {
+      "id": 1764266379154,
+      "name": "Haseeb",
+      "value": "12"
+    }
+  ]
+}
