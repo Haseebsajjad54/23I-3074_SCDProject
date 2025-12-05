@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: nodevault-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - nodevault-net
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nodevault-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/nodevault
+      - NODE_ENV=production
+    depends_on:
+      - mongo
+    networks:
+      - nodevault-net
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  nodevault-net:
+    driver: bridge
